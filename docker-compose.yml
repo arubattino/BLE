@@ -1,0 +1,19 @@
+services:
+  backend:
+    build: ./backend
+    network_mode: host          # expose host BT controller
+    privileged: true            # allow BLE HCI access
+    volumes:
+      - /var/run/dbus:/var/run/dbus
+    env_file:
+      - ./.env
+  frontend:
+    build: ./frontend
+    ports:
+      - "${FRONTEND_PORT:-3000}:80"              # nginx serves on 80 inside
+    depends_on:
+      - backend
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    env_file:
+      - ./.env
