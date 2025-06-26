@@ -1,8 +1,10 @@
 services:
   backend:
     build: ./backend
-    network_mode: host          # expose host BT controller
+    #network_mode: host          # expose host BT controller
     privileged: true            # allow BLE HCI access
+    ports:
+      - "5001:5001"
     volumes:
       - /var/run/dbus:/var/run/dbus
     env_file:

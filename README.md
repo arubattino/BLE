@@ -30,7 +30,11 @@ A web application to scan and display nearby Bluetooth Low Energy (BLE) devices 
 
 2. Build and run the containers:
 ```bash
+   # Windows
    docker-compose up --build
+
+   # Linux
+   docker compose up --build
 ```
 
 3. Access the web UI:
